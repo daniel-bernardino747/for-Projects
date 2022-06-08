@@ -1,8 +1,15 @@
 from random import randint
 
-def user_answer(answer):
-    question = str(input(answer)).strip().lower()[0]
-    return question
+def user_answer(question, category=str):
+    try:
+        query = category(input(question))
+        return query
+    except ValueError:
+        return '\nO valor digitado não condiz com o tipo de dado que o input recebe.'
+
+def user_condition(question):
+    query = str(input(question)).strip().lower()[0]
+    return query
 
 def value_random(first=0, last=9):
     try:
@@ -18,4 +25,6 @@ def value_random(first=0, last=9):
 
 
 if __name__ == '__main__':
-    print(value_random(input('Primeiro valor: '), input('Segundo valor: ')))
+    # print(value_random(input('Primeiro valor: '), input('Segundo valor: ')))
+    ans = user_answer('Digite um número ', int)
+    print(ans)
