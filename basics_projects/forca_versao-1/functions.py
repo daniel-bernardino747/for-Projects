@@ -53,8 +53,6 @@ def hangman(word):
                 print('Você achou a última letra.')
             else:
                 print('Você achou uma letra da palavra.')
-        elif user_letter == '0':
-            break
         else:
             lives -= 1
             system('clear')
