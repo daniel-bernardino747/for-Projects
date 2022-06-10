@@ -1,15 +1,14 @@
 import qrcode
-# teste1
 
 """
-# teste1
+# teste0
 img = qrcode.make('Eba tá funcionando')
 type(img)  # qrcode.image.pil.PilImage
 img.save("primeiro_qrcode.png")
 """
 
 """
-# teste2
+# teste1
 qr = qrcode.QRCode(
     version=1,
     error_correction=qrcode.constants.ERROR_CORRECT_L,
@@ -24,7 +23,7 @@ img.save('teste1.png')
 """
 
 """
-# teste3
+# teste2
 qr = qrcode.QRCode(
 
     version=2,
@@ -83,6 +82,7 @@ qr.make(fit=True)
 img = qr.make_image(fill_color="black", back_color="white")
 img.save('teste5.png')
 """
+
 """
 # teste6
 qr = qrcode.QRCode(
@@ -98,6 +98,7 @@ img = qr.make_image(fill_color="white", back_color="black")
 img.save('teste6.png')
 """
 
+"""
 # teste7
 qr = qrcode.QRCode(
     version=2,
@@ -110,3 +111,4 @@ qr.make(fit=True)
 
 img = qr.make_image(fill_color=(255, 195, 235), back_color=(55, 95, 35))
 img.save('teste7.png')
+"""
