@@ -1,8 +1,13 @@
 from os import system
-from tokenize import Number
 
 def user_condition(question, category=str):
-    query = category(input(question)).strip().lower()[0]
+    while True:
+        try:
+            query = category(input(question)).strip().lower()[0]
+        except IndexError:
+            print('Você não digitou nada.')
+        else:
+            break
     return query
 
 def hangman(word):
