@@ -1,13 +1,16 @@
 from random import choice
 from os import system
+from os.path import dirname, join
 from functions import hangman, user_condition
 
-with open(r'C:\Users\Daniel.DESKTOPDAN\principal_tools\Documents\For_Python\basics_projects\forca_versao-1\Lista-de-Palavras.txt', 'r') as arquivo:
-    arq = arquivo.readlines()
+# current_dir = dirname(__file__)
+file = join(dirname(__file__), 'Lista-de-Palavras.txt')
+with open(file, 'r') as f:
+    arq = f.readlines()
 
 while True:
     word = choice(arq).strip('\n').upper()
-    # hangman(word)
+    hangman(word)
     exit = 'E'
     while exit not in 'sn':
         exit = user_condition(f'{"=" * 30} \nVamos brincar de novo? [Sim / Não] ', str)
