@@ -1,5 +1,9 @@
 from os import system
 
+def user_condition(question, category=str):
+    query = category(input(question)).strip().lower()[0]
+    return query
+
 def hangman(word):
     system('clear')
     lives = 6
@@ -9,6 +13,9 @@ def hangman(word):
     unnamed = [i.replace(f'{i}', '_') for i in word]
     print('Adivinhe a palavra abaixo:')
     while True:
+        if letters == set():
+            print(f'O jogo acabou, você descobriu a palavra {word}. Parabéns!')
+            break
         print(f'Você tem {lives} vidas.\n')
         for a in unnamed:
             print(a, end=' ')
@@ -27,7 +34,10 @@ def hangman(word):
             unnamed = [user_letter if value == user_letter else unnamed[index] for index, value in enumerate(normal_letters)]
             letters.remove(user_letter)
             system('clear')
-            print('\nVocê achou uma letra da palavra.')
+            if letters == set():
+                print('Você achou a última letra.')
+            else:
+                print('\nVocê achou uma letra da palavra.')
         elif user_letter == '0':
             break
         else:
