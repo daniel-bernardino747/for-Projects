@@ -1,6 +1,7 @@
 from os import system
 
 def hangman(word):
+    system('clear')
     lives = 6
     letters = set(word)
     normal_letters = list(word)
@@ -33,7 +34,4 @@ def hangman(word):
             break
 
 if __name__ == '__main__':
-    word = 'blabla'
-    word.upper()
-    print(word)
-    hangman(word)
+    print('== Testes ==')
