@@ -2,6 +2,7 @@ from random import choice
 from os import system
 from os.path import dirname, join
 from functions import hangman, user_condition
+from time import sleep
 
 # current_dir = dirname(__file__)
 file = join(dirname(__file__), 'Lista-de-Palavras.txt')

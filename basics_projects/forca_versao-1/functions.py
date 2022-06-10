@@ -1,4 +1,5 @@
 from os import system
+from tokenize import Number
 
 def user_condition(question, category=str):
     query = category(input(question)).strip().lower()[0]
@@ -24,9 +25,18 @@ def hangman(word):
             for m in used_letters:
                 print(m, end= ' ')
         while True:
-            user_letter = str(input('\nDigite uma letra: ')).upper()
+            while True:
+                try:
+                    user_letter = str(input('\nDigite uma letra: ')).upper().strip()[0]
+                except IndexError:
+                    print('É preciso digitar uma letra. Tente de novo.')
+                    continue
+                else:
+                    break
             if user_letter in used_letters:
                 print(f'Você já adicionou a letra {user_letter}, tente outra.')
+            elif user_letter not in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ-':
+                print('Você não digitou uma letra válida. Tente de novo.')
             else:
                 break
         used_letters.append(user_letter)
@@ -37,7 +47,7 @@ def hangman(word):
             if letters == set():
                 print('Você achou a última letra.')
             else:
-                print('\nVocê achou uma letra da palavra.')
+                print('Você achou uma letra da palavra.')
         elif user_letter == '0':
             break
         else:
