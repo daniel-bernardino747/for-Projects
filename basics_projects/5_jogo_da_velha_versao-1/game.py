@@ -1,4 +1,6 @@
 import math
+from re import X
+from players import HumanPlayer, ComputerPlayer
 
 class TicTacToe():
     def __init__(self):
@@ -36,7 +38,7 @@ class TicTacToe():
         return False
     
     def winner(self, square, letter):
-        row_index = math.floot(square / 3)
+        row_index = math.floor(square / 3)
         row = self.board[row_index*3: (row_index+1)*3]
         if all(s == letter for s in row):
             return True
@@ -65,7 +67,9 @@ class TicTacToe():
 def play(game, x_player, o_player, print_game=True):
 
     if print_game:
+        print('\nAs posições são:\n')
         game.print_board_nums()
+        print()
 
     letter = 'X'
     while game.empty_squares():
@@ -76,13 +80,13 @@ def play(game, x_player, o_player, print_game=True):
         if game.make_move(square, letter):
 
             if print_game:
-                print(letter + f' fez a jogada no espaço {square}')
+                print(letter + f' fez a jogada no espaço {square}.\n')
                 game.print_board()
                 print('')
             
             if game.current_winner:
                 if print_game:
-                    print(letter + ' wins!')
+                    print(letter + ' ganhou!')
                 return letter
             letter = 'O' if letter == 'X' else 'X'
     
@@ -90,12 +94,8 @@ def play(game, x_player, o_player, print_game=True):
         print('Deu empate.')
 
 
-
 if __name__ == '__main__':
-    board = [' ' for _ in range(9)]
-    for i in range(3):
-        for row in board[i*3: (i+1)*3]:
-            print('| ' + row, end=' ')
-        print('|')
-        if not i == 2:
-            print('-' * 13)
+    x_player = ComputerPlayer('X')
+    o_player = HumanPlayer('O')
+    t = TicTacToe()
+    play(t, x_player, o_player, print_game=True)
