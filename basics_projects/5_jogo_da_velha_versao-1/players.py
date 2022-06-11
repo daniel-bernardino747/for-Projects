@@ -1,5 +1,4 @@
 from random import choice
-from re import L
 
 class Player():
     def __init__(self, letter):
@@ -20,9 +19,12 @@ class HumanPlayer(Player):
             square = input(self.letter + ', é a sua vez. Escolha a posição (0-8): ')
             try:
                 val = int(square)
-                pass
+                if val not in game.available_moves():
+                    raise ValueError
+                valid_square = True
             except ValueError:
                 print('Posição inválida. Tente novamente.')
+        return val
 
 
 class ComputerPlayer(Player):
@@ -30,4 +32,6 @@ class ComputerPlayer(Player):
         super().__init__(letter)
     
     def get_move(self, game):
-        pass
+        square = choice(game.available_moves())
+        return square
+
