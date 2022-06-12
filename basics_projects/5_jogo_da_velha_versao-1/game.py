@@ -1,5 +1,5 @@
 import math
-from re import X
+from os import system
 from players import HumanPlayer, ComputerPlayer
 
 class TicTacToe():
@@ -80,12 +80,14 @@ def play(game, x_player, o_player, print_game=True):
         if game.make_move(square, letter):
 
             if print_game:
+                system('clear')
                 print(letter + f' fez a jogada no espaço {square}.\n')
                 game.print_board()
                 print('')
             
             if game.current_winner:
                 if print_game:
+                    system('clear')
                     print(letter + ' ganhou!')
                 return letter
             letter = 'O' if letter == 'X' else 'X'
@@ -93,6 +95,15 @@ def play(game, x_player, o_player, print_game=True):
     if print_game:
         print('Deu empate.')
 
+def user_condition(question, category=str):
+    while True:
+        try:
+            query = category(input(question)).strip().lower()[0]
+        except IndexError:
+            print('Você não digitou nada.')
+        else:
+            break
+    return query
 
 if __name__ == '__main__':
     x_player = ComputerPlayer('X')
