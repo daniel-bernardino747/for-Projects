@@ -1,7 +1,10 @@
+import random
+
 # criar o campo minado
 class minesweeper():
     def __init__(self):
         self.camp = self.make_camp()
+        self.bombs = self.make_bomb()
     
     @staticmethod
     def make_camp():
@@ -16,8 +19,24 @@ class minesweeper():
                 print(f' {a} |', end='')
             print('\n   ','-'*33)
 
+    @staticmethod
+    def make_bomb():
+        return '+'
+    
+    def empty_squares(self):
+        num_empty = 0 
+        for i in range(8):
+            num_empty += self.camp[i].count(' ')
+        return num_empty
+
+    def set_bombs(self):
+        while self.empty_squares(self) > 54:
+            self.camp[random.randint(0, 7)][random.randint(0, 7)] = self.bombs
+            
+
 def play(game, print_game=True):
     if print_game:
+        game.set_bombs()
         game.print_camp()
 
 
