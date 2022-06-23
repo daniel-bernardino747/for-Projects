@@ -1,3 +1,5 @@
+from pprint import pprint
+
 def find_first_empty(puzzle):
 
     for r in range(9):
@@ -61,3 +63,19 @@ def solver_sudoku(puzzle):
     return False
 
 # step 2: Testa com __name__ = __main__
+if __name__ == '__main__':
+    test = [
+        [3, 9, -1,   -1, 5, -1,   -1, -1, -1],
+        [-1, -1, -1,   2, -1, -1,   -1, -1, 5],
+        [-1, -1, -1,   7, 1, 9,   -1, 8, -1],
+
+        [-1, 5, -1,   -1, 6, 8,   -1, -1, -1],
+        [2, -1, 6,   -1, -1, 3,   -1, -1, -1],
+        [-1, -1, -1,   -1, -1, -1,   -1, -1, 4],
+
+        [5, -1, -1,   -1, -1, -1,   -1, -1, -1],
+        [6, 7, -1,   1, -1, 5,   -1, 4, -1],
+        [1, -1, 9,   -1, -1, -1,   2, -1, -1]
+    ]
+    print(solver_sudoku(test))
+    pprint(test)
