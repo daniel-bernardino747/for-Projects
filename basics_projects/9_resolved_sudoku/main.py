@@ -1,4 +1,17 @@
+def find_first_empty(puzzle):
+
+    for r in range(9):
+        for c in range(9):
+            if puzzle[r][c] == -1:
+                return r, c
+    
+    return None, None
+
+
 # step 1: function resolvedor_sudoku(desafio):
+def solver_sudoku(puzzle):
+
+    row, col = find_first_empty(puzzle)
     # step 1.1: encontra o primeiro espaço vazio // sair para caso esteja resolvido
     # step 1.2: faz o chute
         # step 1.2.1: confere se esse chute é válido
