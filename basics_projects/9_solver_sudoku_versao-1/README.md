@@ -6,6 +6,7 @@ basicamente ele resolve um sudoku já inserido no código, mostrando se foi reso
 - Tratamento de Erros
 - Condicionais
 - Laços while
+- Decoradores
 ## Arquivos
 ### main.py
 No arquivo "main.py" está o programa principal.
