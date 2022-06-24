@@ -63,6 +63,14 @@ def solver_sudoku(puzzle):
     # step 1.3: Se não deu returna False
     return False
 
+def decorator(func):
+    def inner(*args, **kwargs):
+        print('=' * 25)
+        func(*args, **kwargs)
+        print('=' * 25)
+    return inner
+
+@decorator
 def show_sudoku(puzzle):
     template_sudoku = deepcopy(puzzle)
     for r in range(9):
