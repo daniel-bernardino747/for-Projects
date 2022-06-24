@@ -1,4 +1,5 @@
 from pprint import pprint
+from copy import deepcopy
 
 def find_first_empty(puzzle):
 
@@ -62,6 +63,22 @@ def solver_sudoku(puzzle):
     # step 1.3: Se não deu returna False
     return False
 
+def show_sudoku(puzzle):
+    template_sudoku = deepcopy(puzzle)
+    for r in range(9):
+        for c in range(9):
+            if template_sudoku[r][c] == -1:
+                template_sudoku[r][c] = ' '
+    for i in range(9):
+        if i in (3, 6):
+            print('-'*25)
+        print('|', end=' ')
+        for b in range(9):
+            if b in (3, 6):
+                print('|', end=' ')
+            print(template_sudoku[i][b], end= ' ')
+        print('|')
+
 # step 2: Testa com __name__ = __main__
 if __name__ == '__main__':
     initial_test = [
@@ -77,6 +94,7 @@ if __name__ == '__main__':
         [6, 7, -1,   1, -1, 5,   -1, 4, -1],
         [1, -1, 9,   -1, -1, -1,   2, -1, -1]
     ]
+    show_sudoku(initial_test)
     print(solver_sudoku(initial_test))
     pprint(initial_test)
 
