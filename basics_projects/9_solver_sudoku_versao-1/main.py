@@ -15,5 +15,9 @@ initial_test = [
     [1, -1, 9,   -1, -1, -1,   2, -1, -1]
 ]
 show_sudoku(initial_test)
-print(solver_sudoku(initial_test))
-pprint(initial_test)
+tentative = solver_sudoku(initial_test)
+if tentative is True:
+    print('\nConsegui resolver esse Sudoku. Veja abaixo o resultado.\n')
+else:
+    print('\nNão consegui resolver esse. Acho que temos algum problema no Puzzle.\n')
+show_sudoku(initial_test)
